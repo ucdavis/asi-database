@@ -1,1 +1,0 @@
-$(function(){$("#nav-toggle").click(function(n){n.preventDefault(),$("ul#portal-globalnav").toggleClass("open"),$("body").toggleClass("nav-open"),$(this).find("span").toggleClass("icon-reorder icon-remove-sign")})});
