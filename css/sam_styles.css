@@ -1,0 +1,257 @@
+/*------------------------- Event Details table -------------------------*/
+
+.event_table table {
+    background-color: white;
+    font-size: 14px;
+}
+
+.event_table table tr th {
+    background: white;
+    text-align: left;
+    font-weight: normal;
+}
+
+.event_table .eventDetails {
+	margin-left: 0px;
+}
+
+/*-------------------------- Directory styles ---------------------------*/
+
+/* image */
+.facultyStaffDirectory .cell.width-3.position-0 {
+	height: auto;
+	width: 100%; /*cal's changing this, try to use percentages for widths auto for height, it helps responsive design*/
+}
+
+.facultyStaffDirectory .cell.width-3.position-0 img{
+    width: 100%; /*this will make it so those images arent squished and also be responsive*/
+    max-width:200px; /*this will help keep it in check so it doesn't get to big*/
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+/* content container */
+.facultyStaffDirectory .cell.width-13.position-4 {
+ height: auto;
+ width: 70%;
+}
+
+/* gap below name content */
+#content .facultyStaffDirectory ul.jobTitle {
+    margin-bottom: 0px;
+
+}
+
+#content .facultyStaffDirectory .listing{
+    margin-bottom: 20px;
+
+}
+
+
+/* People classification nav */
+.classificationList li a {
+    font-family: 'proxima-nova', sans-serif;
+}
+
+/* classification header */
+.classificationListing h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.personName {
+    color: #434343;
+    margin-bottom: 0px;
+    line-height: 20px;
+
+}
+
+.jobTitle li{
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 14px;
+    color: #9B9B9B;
+}
+
+
+/* contact info font */
+
+.officePhone {
+    font-size: 14px;
+    color: #434343;
+    line-height: 17px;
+    padding-top: 20px;
+}
+
+.emailAddress {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.moreInfo {
+    font-size: 12px;
+    line-height: 17px;
+
+}
+
+/*--------------------------- More Info -------------------------------*/
+
+#hcard .title {
+    font-family: 'proxima-nova', sans-serif;
+    margin-top: 0px;
+    color: #9B9B9B;
+    width: 55%;
+}
+
+#hcard .row span {
+    line-height: 1.2em;
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 14px;
+}
+
+#hcard .headshot img{
+    height: auto;
+}
+/*
+#hcard .headshot.cell.width-4.position-12 img{
+height: auto;
+    width: 100%;
+
+}
+.facultyStaffDirectory .cell.width-3.position-0 img{
+    width: 100%; this will make it so those images arent squished and also be responsive
+    max-width:200px; /*this will help keep it in check so it doesn't get to big
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+
+
+*/
+
+/*----------------- Russell Ranch gallery photo table --------------------*/
+.site-rr table img {
+    padding-right: 15px;
+    vertical-align: top;
+    width: 75%;
+    height: auto;
+}
+
+.site-rr tbody tr {
+    vertical-align: top;
+}
+
+.site-rr td dd.image-caption {
+   /* padding-right: 50px;
+    padding-left: 50px;*/
+}
+/*
+.site-rr table {
+    width: 50%;
+}
+*/
+.site-rr dl.image-inline captioned{
+    width: 350px;
+}
+
+/*--------------- SAREP BIFs proj table -----------------*/
+.site-sarep table.listing td{
+    border-top: 1px solid #DDD;
+}
+
+
+/*-------------- Search Results ------------------------*/
+.searchResults {
+    font-size: 14px;
+    line-height: 120%;
+}
+
+#search-results-bar {
+    font-size: 12px;
+}
+/*
+.searchResults dt {
+    margin-bottom:20px;
+}
+*/
+
+div.listingBar a {
+    font-size: 12px;
+     border-bottom: 0.1em solid #CCC;
+
+}
+
+div.listingBar span {
+    font-size: 12px;
+}
+/*
+.listingBar a {
+ border-bottom: 0.1em solid #CCC;
+}
+*/
+
+/*----------------- Topics -------------------------*/
+
+#content a.topic_text, a.topic_text{
+    color:#fff !important;
+    font-size: 16px;
+    text-decoration:none !important;
+    background-color:rgba(33, 33, 33, 0.6);
+    padding: 2px;
+    position:relative;
+    left:0px;
+    bottom: 60px;
+    padding-right:3%;
+    padding-left: 2.5%;
+}
+
+
+/*// Topics //*/
+
+#content .topicbox {
+  /*margin-left:0px;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;*/
+}
+#content .topicbox div {
+  display:inline-block;
+  width:30%;
+}
+@media (max-width: 750px) {
+#content .topicbox div {
+  width:45%;
+}
+}
+#content .topicbox a.topic_text {
+  line-height:1.5;
+  left:15px;
+  padding:10px 15px;
+  text-shadow:0px 0px 10px rgba(33, 33, 33, 0.7);
+}
+.topicredux {
+  display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    width: 48%;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+}
+a.topic_a {
+  font-weight: 600;
+    font-size:1.8rem;
+    color:#fff !Important;
+    text-decoration:none !Important;
+      position: absolute;
+      bottom: 28px;
+      left: 8px;
+      z-index: 10;
+      width: 70%;
+      text-shadow: 0px 0px 10px rgba(33, 33, 33, 0.7) !Important;
+}

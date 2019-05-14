@@ -1,0 +1,112 @@
+// Game over without codekit
+// This is the base file that pulls together all the other elements.
+
+@import 'dependencies';			// Global variables and shared styles
+@import 'foundation';			// Structural CSS
+@import 'navigation';           // navigation
+@import 'typography';           // typograophy
+@import 'components';			// Reusable pieces, i.e. icons, buttons
+@import 'regions';				// Page region styles
+@import 'responsive';			// Responsive styles
+@import 'nivoslider';                           // Slider css
+@import 'nivosliderdefault';                    // Slider default theme css
+
+
+
+
+// -----------------------------------------------------------------
+//
+// For the starter template. You can remove the below from any real proj 
+//
+// -----------------------------------------------------------------
+
+
+/* Plone Hax */
+
+.managePortletsBelowTitleLink, #LSResult, .recent_news_class .odd:first-child, .recent_news_class a.seemoremain {
+	display: none !important;
+}
+.portletItemDetails {
+	margin-left: 0px;
+}
+.highlightedSearchTerm {
+	background-color: #AAE8FF;
+}
+.section-questions-comments input.context
+{
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: $primary-color;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family:$sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 0.5em;
+    padding-bottom: 3px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 3px;
+    text-transform: uppercase;
+    width: 15%;}
+
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+div.listingBar a:hover {
+    background-color:$secondary-color;
+}
+// #content a:hover {
+//     color:#fff !important;
+// }
+div.listingBar a:hover {
+    border-color:lighten($secondary-color, .9);
+}
+/* style tile swatches */
+body.section-styles #content{
+.swatch {display: block; width: 80px; height: 80px; background: #ccc; overflow: hidden; clear:both;}
+dl {display: block; clear: both; margin-bottom: 100px;}
+dt, dd {float: left; padding: 5px;}
+dt {font-weight: bold; font-size: .9em; width: 80px; text-align: right;}
+dd {margin-left: 0;}
+
+    .primary-color {background: $primary-color;}
+    .secondary-color {background: $secondary-color;}
+
+    .dark-gray {background: $dark-gray;}
+    .middle-gray {background: $middle-gray;}
+    .light-gray {background: $light-gray;}
+
+    .background-color {background: $background-color;}
+    .box-color {background: $boxcolor;}
+    .borders {background: $borders;}
+}
+.icons-on .contenttype-news-item {
+    padding-left:0px !important;
+    background:none !important;
+}
+#content div.documentByLine, span.documentByLine {
+    display:none;
+}
+.template-plone-app-collection-interfaces-icollection span.documentByLine {
+    display:block;
+    font-size:1.6rem;
+    line-height: 1.5;
+}
+.logo-header h2 {
+    display:none;
+}
+.template-default_error_message .logo-header h2 {
+    display: block;
+}

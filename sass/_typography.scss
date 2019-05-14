@@ -1,0 +1,645 @@
+// Base typography
+
+$strict-normalize: true !default;
+
+// The default font family.
+$base-font-family: sans-serif !default;
+
+// The base font size.
+$base-font-size: 16px !default; // Override default set in Compass' Vertical Rhythm partial.
+
+// The base line height determines the basic unit of vertical rhythm.
+$base-line-height: 24px !default; // Override default set in Compass' Vertical Rhythm partial.
+
+// The font sizes for h1-h6.
+$h1-font-size: 1.75    * $base-font-size !default;
+$h2-font-size: 1.35  * $base-font-size !default;
+$h3-font-size: 1.09 * $base-font-size !default;
+$h4-font-size: 1    * $base-font-size !default;
+$h5-font-size: 0.83 * $base-font-size !default;
+$h6-font-size: 0.67 * $base-font-size !default;
+/* anchor styles */
+
+html {
+    font-size: 10px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    line-height: 1.5;
+    @include breakpoint(tablet) {
+        font-size: 8px;
+    }
+    @include breakpoint(mobileonly) {
+        font-size: 7px;
+    }
+}
+
+a {
+    .top-header & {
+        color: transparentize(#fff, .2);
+        font-weight: 100;
+        font-family: $sans-serif;
+        letter-spacing: 0.5px;
+        font-size: 1.4rem;
+        &:hover {
+            @include accent-theme-color;
+        }
+    }
+    .section-homepage .spotlight_events .portletItem &.tile {
+        font-size: 1.8rem;
+        color: #ffffff;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+a:link {
+    // color:$main-font;
+    header & {
+        color: #fff;
+    }
+    #content p & {
+        color: $a-link;
+        text-decoration: underline;
+    }
+    #content ul li & {
+        color: $a-link;
+        text-decoration: underline;
+    }
+    #content h2 & {
+        color: $main-font;
+    }
+    #content h3 & {
+        color: $main-font;
+    }
+}
+
+a:visited {
+    // color:$main-font;
+    header & {
+        color: #fff;
+    }
+    #content p & {
+        color: $a-link;
+        text-decoration: underline;
+    }
+    #content ul li & {
+        color: $a-link;
+        text-decoration: underline;
+    }
+    #content h2 & {
+        color: $main-font;
+    }
+    #content h3 & {
+        color: $main-font;
+    }
+}
+
+a:hover {
+    color: $secondary-color;
+    header {
+        color: $secondary-color;
+    }
+    #content p & {
+        color: $secondary-color !important;
+    }
+    #content ul li & {
+        color: $a-link;
+    }
+    #content h2 & {
+        color: $secondary-color !important;
+    }
+    #content h3 & {
+        color: $secondary-color !important;
+    }
+}
+
+a:active {
+    color: $secondary-color;
+}
+
+label,
+input {
+    font-family: $sans-serif;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+h5,
+h6 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-family: $sans-serif;
+    color: $main-font;
+    letter-spacing: .2px;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.2rem;
+    #content &.documentFirstHeading {
+        font-size: 2.8rem;
+        font-weight: 600;
+    }
+    .lefthead & {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 600;
+    font-family: $sans-serif;
+    .lefthead & {
+        font-size: 3.2rem;
+        font-family: $sans-serif;
+        font-weight: 100;
+        a:hover {
+            @include accent-theme-color;
+        }
+    }
+    .programs_homepage_header &
+     {
+    	text-align:center;
+    	font-family: $sans-serif;
+	    color: #fff;
+	    font-weight: 600;
+	    font-size: 1.6rem;
+	    text-transform: uppercase;
+	    display: inline-block;
+	    padding: 12px 20px;
+	    letter-spacing: .5px;
+	    padding-bottom: 5px;
+	    background-color:$asi_main;
+	    margin-bottom:0px;
+        border-top-right-radius:3px;
+        border-top-left-radius:3px;
+    }
+    // &.welcome_header {
+    // 	font-family:$sans-serif;
+    // 	color:#fff;
+    // 	font-weight:400;
+    // 	font-size:2.2rem;
+    // 	display:inline-block;
+    // 	padding:16px 24px 6px 24px;
+    // 	letter-spacing: .5px;
+    // 	margin-bottom:0px;
+    // 	background-color:lighten($asi_main,5);
+    // }
+}
+
+h3 {
+    font-size: 1.8rem;
+    line-height: 3rem;
+    &.ul_header {
+        color: #777;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        margin-top: 6%;
+    }
+    &.home_section_header {
+      font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 600;
+  font-family: "proxima-nova", sans-serif;
+  margin-top:24px;
+  text-align: center;
+
+    }
+    .portlet-static-homepage-focus & {
+        font-weight: 600;
+        margin-top: 0px;
+    }
+    .eventdetailsside & {
+        font-family: $sans-serif;
+        color: #fff;
+        font-weight: 400;
+        display: inline-block;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        padding: 10px 18px 4px 14px;
+        letter-spacing: .5px;
+        margin-top: 6px;
+        padding-bottom: 5px;
+        @include accent-theme-bg-color;
+        margin-bottom: 0px;
+    }
+}
+
+h4 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    color: $light-gray;
+}
+
+h5 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    .doormat_contents & {
+        margin-bottom: 0px;
+    }
+}
+
+h6 {
+    padding-bottom: .35em;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+b,
+strong,
+th {
+    font-weight: 800;
+}
+
+label {
+    font-weight: 500;
+}
+
+legend {
+    font-weight: 600;
+}
+p.caption{
+        font-size:1.4rem !important;
+        color:#2F4D6A !important;
+        margin-top:5px !important;
+    }
+p {
+    font-family: $serif;
+    line-height: 1.625;
+    font-weight: 400;
+    letter-spacing: .025rem;
+    font-size: 1.6rem;
+    color: $dark-gray;
+    margin-top: .4em;
+
+    .portlet_column & {
+        color: $middle-font;
+        font-size: 1.4rem;
+    }
+    .doormat_contents & {
+        color: $light-font;
+        font-size: 1.2rem;
+    }
+    .top-header & {
+        color: transparentize(#fff, .2);
+    }
+    .lefthead & {
+        font-style: italic;
+        color: #fff;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+    footer & {
+        color: #fff;
+        margin-top: 0px;
+    }
+    .bottom_ports & {
+        font-size: 1.4rem;
+        line-height: 21px;
+    }
+    // .portlet-static-homepage-welcome & {
+    //     font-size:2.4rem;
+    //     text-align:center;
+    //     color: #5C5C5C;
+    //     line-height:1.8;
+    //     max-width:100rem;
+    //     margin:0 auto;
+    //     font-family:$sans-serif;
+    // }
+    &.eventdescription {
+        font-size: 1.6rem;
+        font-family: $sans-serif;
+        color: #fff;
+    }
+}
+
+ul {
+    &.two-col-list {
+        padding-left: 0px;
+        margin-left: 0px !important;
+        li {
+            width: 48%;
+            display: inline-block !important;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            @include breakpoint (tablet) {
+                width: 100%;
+                display: list-item !important;
+            }
+        }
+    }
+    &.three-col-list {
+        padding-left: 0px;
+        margin-left: 0px !important;
+        li {
+            width: 33.1%;
+            display: inline-block !important;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            @include breakpoint (tablet) {
+                width: 100%;
+                display: list-item !important;
+            }
+            // @include breakpoint (laptop) {
+            //   width:33.1%;
+            // }
+        }
+        li.program_list_item {
+            vertical-align: top;
+            text-align: center;
+            // position:absolute;
+            margin: 0px;
+
+        }
+    }
+    #footer_contents & li {
+        display: list-item;
+        list-style: none;
+        vertical-align: top;
+        color: #fff;
+        margin-left: 4%;
+        color: #fff;
+        a {
+            color: #fff;
+            &:hover {
+                color: fff;
+            }
+        }
+    }
+    .portletstatic & {
+        color: $middle-font;
+    }
+    &.image_list {
+        margin-left: 0px;
+        li {
+            list-style: none;
+            display: inline !important;
+            padding-right: 5%;
+            .section-homepage & {
+                display: inline-block !important;
+                width: 16%;
+                vertical-align: top;
+                text-align: center;
+                margin-right: 4%;
+                padding-right: 0px;
+                &:last-child {
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+    &.program_list {
+        margin-left: 0px;
+        li {
+            list-style: none;
+            display: inline-block !important;
+            vertical-align: top;
+            text-align: center;
+            width: 46%;
+            padding-right: 0px;
+            background-color: #000;
+            margin: 1% 0%;
+            h3 {
+                margin: 0px;
+            }
+            &:nth-child(odd) {
+                margin-right: 2%;
+            }
+            a {
+                font-size: 1.8rem;
+                font-family: $sans-serif;
+                color: #fff;
+                display: inline-block !important;
+                width: 100%;
+                min-height: 64px;
+                vertical-align: middle;
+                text-align: center;
+                padding: 3%;
+                line-height: 1.5;
+                padding-left: 6%;
+                padding-right: 6%;
+                &.sarep-main-bg {
+                    &:hover {
+                        background-color: lighten($sarep_main, 5);
+                    }
+                }
+                &.rr-main-bg {
+                    &:hover {
+                        background-color: lighten($rr_main, 5);
+                    }
+                }
+                &.sf-main-bg {
+                    &:hover {
+                        background-color: lighten($sf_main, 5);
+                    }
+                }
+                &.infas-main-bg {
+                    &:hover {
+                        background-color: lighten($infas_main, 5);
+                    }
+                }
+                &.safs-main-bg {
+                    &:hover {
+                        background-color: lighten($safs_main, 5);
+                    }
+                }
+                &.sustain-main-bg {
+                    &:hover {
+                        background-color: lighten($sustain_main, 5);
+                    }
+                }
+            }
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+    .content & {
+        list-style-type: disc;
+    }
+}
+
+.section-homepage ul.three-col-list {
+    li {
+        @include breakpoint (tablet) {
+            width: 49.8%;
+            display: inline-block !important;
+        }
+        @include breakpoint (navcut) {
+            width: 100%;
+            display: list-item !important;
+        }
+    }
+}
+
+li {
+    font-family: $serif;
+    font-size: $base-font-size;
+    color: $dark-gray;
+    #portal-globalnav & {
+        margin-right: 8px;
+        &:first-child a {
+            padding-left: 14px;
+        }
+        a {
+            background-color: transparent;
+            font-family: $sans-serif;
+            color: #fff;
+            padding: 8px 14px;
+            border-top: none;
+            border-right: none;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: .75px;
+            min-width: 3em;
+            .webkit & {
+                font-weight: 400;
+            }
+            &:hover {
+                @include accent-theme-color;
+                background-color: transparent;
+            }
+        }
+    }
+    ul.twocol & {
+        display: inline-block !important;
+        width: 49%;
+        vertical-align: top;
+    }
+    .portletstatic & {
+        display: list-item;
+        list-style: disc;
+        padding: .4rem;
+        color: $middle-font;
+    }
+}
+
+#content .documentDescription,
+#content #description
+/* summary */
+
+{
+    font-family: $serif;
+    color: $light-font;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 8px 0px 9px 0px;
+    line-height: 1.5em;
+    letter-spacing: 0.15px;
+}
+
+#content div.documentByLine,
+span.documentByLine
+/* document date - by - rights */
+
+{
+    font-family: $sans-serif;
+    color: $main-font;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+// #plone-document-byline {
+// 	display:none !important;
+// }
+dt.portletHeader {
+    font-family: $sans-serif;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 18px 4px 14px;
+    letter-spacing: .5px;
+    margin-top: 6px;
+    padding-bottom: 5px;
+    @include accent-theme-bg-color;
+    a, a:link, a:visited {
+        color: #fff;
+    }
+    a:hover {
+        color: #f5f5f5;
+    }
+    .bottom_ports & {
+        background-color: rgba(255, 255, 255, .1);
+        color: $middle-font;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        padding-left: 0px;
+        a {
+            color: $middle-font;
+            &:hover {
+                @include accent-theme-color;
+            }
+        }
+    }
+
+    .section-homepage & {
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+    }
+}
+
+.portletstatic dd.portletItem {
+    border-top: 2px solid #000;
+    @include accent-theme-brdr-color;
+}
+
+// .template-secondary_landing_view {
+// 	dt.portletHeader{
+// 		font-family:$serif;
+// 		font-weight:600;
+// 		font-size:1.4rem;
+// 		display:inline-block;
+// 		text-transform:uppercase;
+// 		padding:0px;
+// 		letter-spacing: .5px;
+// 		margin-top:6px;
+// 		padding-bottom:5px;
+// 		background-color:rgb(255,255,255);
+// 		a {
+// 			color:#fff;
+// 		}
+// 		a:hover {
+// 			color:#f5f5f5;
+// 		}
+// 	}
+// 	.portletstatic dd.portletItem {
+// 		border-top:none;
+// 		padding-top:0px;
+// 	}
+// }
+span {
+    .section-homepage .spotlight_events &.portletItemDetails {
+        font-size: 1.4rem;
+        font-family: $sans-serif;
+        color: rgba(255,255,255,.87);
+    }
+}
+
+span.code {
+    background-color: #eee;
+    font-family: $monospace;
+    padding: 0 0.1em;
+    font-size: 0.8em;
+}
+
+#portal-breadcrumbs {
+    font-size: 1.3rem;
+    color: $light-gray;
+}
+#content .pullquote {
+    width:40%;
+    font-size:2.0rem;
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <!--Head-->
+    <copy css:content="html" css:theme="html" attributes="lang dir" />
+    <copy css:content="head base" css:theme="head base" />
+    <replace css:content="head title" css:theme="head title" />
+    <!--<replace content="/html/head/title/text()" css:theme="#logo-contain h1" />-->
+    <before css:content="head style, head link, head script, head meta" css:theme-children="head" />
+
+    <!--Favicons-->
+    <!-- <theme href="asi-db.html" css:if-content=".template-database_view" /> -->
+    <theme href="index.html" css:if-content=".section-homepage" />
+    <theme href="content.html" css:if-content="#visual-portal-wrapper" />
+
+
+    <!-- homepage craziness -->
+    <copy css:content=".portlet-static-homepage-nivo" css:theme=".homepage_slider" />
+    <copy css:content=".portlet-static-homepage-welcome" css:theme=".homepage_welcome" />
+    <copy css:content=".section-homepage .portletSearch" css:theme=".homepage_search" />
+    <!-- <copy css:content=".portlet-static-homepage-focus" css:theme=".focus_feed" /> -->
+    <copy css:content=".portlet-static-homepage-programs" css:theme=".programs_feed" />
+    <copy css:content=".portlet-static-homepage_slide" css:theme=".homepage_slide" />
+    <copy css:content=".portlet-collection-news" css:theme=".spotlight_feature" />
+    <copy css:content=".section-homepage dl.portletEvents" css:theme=".spotlight_events" />
+
+
+
+    <!--Header-->
+    <copy css:content="#portal-searchbox " css:theme=".searchbar" />
+    <copy css:content=".portlet-static-topnav" css:theme=".topnav" />
+    <copy css:content=".portlet-static-logo" css:theme=".lefthead" />
+     <copy css:content=".portlet-static-topleft" css:theme=".toplefthead" />
+    <copy css:content=".portlet-static-topright" css:theme=".toprighthead" />
+
+
+
+
+    <!--Navigation-->
+<!--     <strip css:content="#portal-globalnav" /> -->
+    <replace css:content="#portal-globalnav" css:theme="ul#nav" />
+
+    <!--Slider-->
+    <copy css:content=".portlet-static-header" css:theme="#banner" />
+    <copy css:content=".portlet-static-full-header" css:theme=".full_banner" />
+    <copy css:content=".portlet-static-nivo" css:theme="#nivoslider" />
+    <copy css:content=".portlet-static-secondary_banner" css:theme=".sub_banner" />
+
+    <!-- breads -->
+    <copy css:content="#portal-breadcrumbs" css:theme=".bread" />
+
+    <!--Content-->
+    <merge attributes="class" css:content="body" css:theme="body" />
+    <copy attributes="id dir" css:content="body" css:theme="body" />
+
+<!--     <copy css:theme="h1.documentFirstHeading" css:content=".maincol_title"/> -->
+    <copy css:theme=".maincol" css:content="#content"/>
+    <prepend css:content="#edit-bar" css:theme=".maincol" />
+
+
+
+    <!-- Events Card -->
+    <copy css:content=".eventDetails" css:theme=".event_table" />
+    <copy css:content=".eventDetails table .location" css:theme=".eventdetailsside .location" />
+    <copy css:content=".eventDetails table .contact-email" css:theme=".eventdetailsside .contact-email" />
+    <copy css:content=".eventDetails table .tel" css:theme=".eventdetailsside .contact-tel" />
+    <copy css:content=".eventDetails table .apply-online" css:theme=".eventdetailsside .apply-online" />
+    <!-- <copy css:content=".eventDetails" css:theme=".eventdetailsside" /> -->
+
+    <!--Sidebar -->
+    <copy css:content="#portal-column-one" css:theme=".portletstatic" />
+    <copy css:content="dt.portletHeader" css:theme=".portletstatic h2" />
+    <strip css:content="dl.portlet" attribute="class" />
+    <replace css:content=".managePortletsLink" css:theme=".manage" />
+
+    <!-- secondary feed on front page -->
+    <strip css:content="#portal-column-one" attribute="class" />
+    <copy css:content="#portal-column-one" css:theme=".frontaside" />
+    <copy css:content="#portlets-below" css:theme=".bottom_ports" />
+    <!-- Main feed on front page -->
+<!--     <strip css:content=".cell.BelowPortletManager1.width-full.position-0" attribute="class" />
+    <strip css:content=".cell.BelowPortletManager1.width-1:3.position-0" attribute="class" />
+    <strip css:content=".cell.BelowPortletManager2.width-1:3.position-1:3" attribute="class" />
+    <strip css:content=".cell.BelowPortletManager3.width-1:3.position-2:3" attribute="class" />
+    <copy css:content="#portlets-below" css:theme="#below_portlets" /> -->
+
+
+
+    <!-- Footer -->
+    <copy css:content=".portlet-static-foot_one" css:theme=".footone" />
+    <copy css:content=".portlet-static-foot_two" css:theme=".foottwo" />
+    <copy css:content=".portlet-static-foot_three" css:theme=".footthree" />
+    <copy css:content=".portlet-static-foot_four" css:theme=".footfour" />
+    <copy css:content=".portlet-static-foot_five" css:theme=".footfive" />
+
+    <replace css:content="#portal-columns" css:theme="#portal-columns" />
+    <replace css:content-children="#portal-footer" css:theme-children="#portal-footer" />
+    <replace css:content="#portal-personaltools-wrapper" css:theme="#portal-personaltools-wrapper" />
+    <replace css:content="#portal-searchbox" css:theme="#portal-searchbox" />
+    <replace css:content="#portal-globalnav" css:theme="#portal-globalnav" />
+    <replace css:content="#portal-siteactions" css:theme="#portal-siteactions" />
+    <replace css:content="#portal-column-two" css:theme="#righthalf #rightportlets" />
+
+     <!-- Scripts via Control Pannel -->
+    <after css:content="#visual-portal-wrapper script" css:theme="body" />
+
+    <!--Portlets-->
+</rules>
