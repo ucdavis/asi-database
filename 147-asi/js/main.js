@@ -120,9 +120,7 @@ function getFile(file, program) {
                 reject(error)
             }
         })
-    }.bind(file), function(reject){
-        console.error(reject);
-    });
+    }.bind(file));
 
     return both;
 }
@@ -155,7 +153,7 @@ $(function () {
     createDataTable();
 
     var url = "https://spreadsheets.google.com/feeds/list/1y7A89kMdcA8_uGTky0ec5Qksj4g9cIIpm4veVYrNDb4/1/public/values?alt=json-in-script&callback=?";
-    $.get('/js/252054_wwtn361q_config.json').done(data => {
+    $.get('/147-asi/js/252054_wwtn361q_config.json').done(data => {
         getAccessToken(data).then(response => {
             accessToken = response.access_token;
             let getItems = getFolderItems(69213161846);
