@@ -57,7 +57,6 @@ function getAccessToken(secrets) {
   let jti = crypto.getRandomValues(array).join("");
 
   let exp = Math.floor(Date.now() / 1000) + 60
-  console.log(exp)
 
   let claims = {
     'iss': secrets.boxAppSettings.clientID,

@@ -17,6 +17,7 @@ var buffer = (function() {
     this.flush = function() {
         this.write(this.buf);
         this.buf.length = 0;
+        filters();
     }
     this.write = function(rows) {
         return MyApp.oTable.rows.add(rows).draw(false);
@@ -37,6 +38,16 @@ var buffer = (function() {
 })();
 
 function getFile(file, program) {
+    function retry(xhr, textStatus, error) {
+        this.retryCount++;
+        if (this.retryCount <= this.retryLimit && xhr.status == 429) {
+            //try again
+            $.ajax(this);
+            return;
+        }
+        else
+            throw error
+    } 
     let shared;
     if(file.shared_link != null) {
         shared = new Promise(function(resolve, reject){
@@ -54,13 +65,19 @@ function getFile(file, program) {
                 shared_link: {
                     access: 'open'
                 }
-            })
+            }),
+            error: retry,
+            retryCount: 0,
+            retryLimit: 5        
         });
     }
     let request = $.ajax({url: `https://api.box.com/2.0/files/${file.id}/metadata`, 
     headers: {
         'Authorization': "Bearer " + accessToken.toString()
-    }
+    },
+    error: retry,
+    retryCount: 0,
+    retryLimit: 10
     });
     let both = Promise.all([shared, request]).then(function([shared_link, response]){
         return new Promise((resolve, reject) => {
@@ -149,25 +166,60 @@ function getFolderItems(folder, program) {
     }, error => console.error(error));
 }
 
+function filters() {
+    MyApp.Organizations.sort();
+    MyApp.Regions.sort();
+    MyApp.categories.sort();
+    //MyApp.keywords.sort();
+
+    addFilters();
+}
+
 $(function () {
     createDataTable();
+
+    $(".filterrow").on("click", "ul.filterlist", function (e) {
+        var filterRegex = "";
+        var filterName = this.id;
+        var filterIndex = MyApp.filterIndexes[filterName];
+
+        var filters = [];
+        $("input", this).each(function (key, val) {
+            if (val.checked) {
+                if (filterRegex.length !== 0) {
+                    filterRegex += "|";
+                }
+
+                filterRegex += val.name; //Use the hat and dollar to require an exact match                
+            }
+        });
+
+        MyApp.oTable.column(filterIndex).search(filterRegex, true, false).draw();
+        // hideUnavailableOrganizations();
+        displayCurrentFilters();
+    });
+
+    $("#clearfilters").click(function (e) {
+        e.preventDefault();
+
+        $(":checkbox", "ul.filterlist").each(function () {
+            this.checked = false;
+        });
+
+        $("ul.filterlist").click();
+    });
 
     var url = "https://spreadsheets.google.com/feeds/list/1y7A89kMdcA8_uGTky0ec5Qksj4g9cIIpm4veVYrNDb4/1/public/values?alt=json-in-script&callback=?";
     $.get('./js/252054_wwtn361q_config.json').done(data => {
         getAccessToken(data).then(response => {
             accessToken = response.access_token;
             let getItems = getFolderItems(69213161846);
-            getItems.then(function(){ 
-                buffer().flush();
-                MyApp.Organizations.sort();
-                MyApp.Regions.sort();
-                MyApp.categories.sort();
-                //MyApp.keywords.sort();
 
-                addFilters();
-            })
-            }, error => console.error(error));
-    });
+            
+            getItems.fail(error => console.error(error))
+            getItems.always(buffer().flush);
+        });
+    })
 })
 
 function hideUnavailableOrganizations(){
@@ -205,46 +257,16 @@ function addFilters(){
     var $region = $("#regions");
     
     $.each(MyApp.Regions, function (key, val) {
-        $region.append('<li><label><input type="checkbox" name="' + val + '"> ' + val + '</label></li>');
+        if($region.has(`input[name="${val}"]`).length == 0)
+            $region.append('<li><label><input type="checkbox" name="' + val + '"> ' + val + '</label></li>');
     });
 
 
     var $researcharea = $("#categories");
     
     $.each(MyApp.categories, function (key, val) {
-        $researcharea.append('<li><label><input type="checkbox" name="' + val + '"> ' + val + '</label></li>');
-    });
-
-
-    $(".filterrow").on("click", "ul.filterlist", function (e) {
-        var filterRegex = "";
-        var filterName = this.id;
-        var filterIndex = MyApp.filterIndexes[filterName];
-
-        var filters = [];
-        $("input", this).each(function (key, val) {
-            if (val.checked) {
-                if (filterRegex.length !== 0) {
-                    filterRegex += "|";
-                }
-
-                filterRegex += val.name; //Use the hat and dollar to require an exact match                
-            }
-        });
-
-        MyApp.oTable.column(filterIndex).search(filterRegex, true, false).draw();
-        // hideUnavailableOrganizations();
-        displayCurrentFilters();
-    });
-
-    $("#clearfilters").click(function (e) {
-        e.preventDefault();
-
-        $(":checkbox", "ul.filterlist").each(function () {
-            this.checked = false;
-        });
-
-        $("ul.filterlist").click();
+        if($researcharea.has(`input[name="${val}"]`).length == 0)
+            $researcharea.append('<li><label><input type="checkbox" name="' + val + '"> ' + val + '</label></li>');
     });
 }
 
