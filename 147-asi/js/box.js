@@ -66,7 +66,7 @@ function getAccessToken(secrets) {
     'jti': jti,
     // We give the assertion a lifetime of 45 seconds 
     // before it expires
-    'exp': Math.floor(Date.now() / 1000) + 45
+    'exp': Math.floor(Date.now() / 1000) + 120
   };
 
   let keyId = secrets.boxAppSettings.appAuth.publicKeyID;
