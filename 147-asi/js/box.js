@@ -56,6 +56,9 @@ function getAccessToken(secrets) {
   let array = new Int32Array(8);
   let jti = crypto.getRandomValues(array).join("");
 
+  let exp = Math.floor(Date.now() / 1000) + 60
+  console.log(exp)
+
   let claims = {
     'iss': secrets.boxAppSettings.clientID,
     'sub': secrets.enterpriseID,
@@ -66,7 +69,7 @@ function getAccessToken(secrets) {
     'jti': jti,
     // We give the assertion a lifetime of 45 seconds 
     // before it expires
-    'exp': Math.floor(Date.now() / 1000) + 60
+    'exp': exp
   };
 
   let keyId = secrets.boxAppSettings.appAuth.publicKeyID;
