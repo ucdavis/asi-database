@@ -47,7 +47,7 @@ function getFile(file, program) {
         }
         else
             throw error
-    } 
+    }
     let shared;
     if(file.shared_link != null) {
         shared = new Promise(function(resolve, reject){
@@ -95,11 +95,11 @@ function getFile(file, program) {
     let both = Promise.all([shared, request]).then(function([shared_link, response]){
         return new Promise((resolve, reject) => {
             try {
-                let val = response.entries[0];
+                let val = response.entries[0] || {};
                 let download = {download_url: `https://ucdavis.app.box.com/embed/s/${shared_link.shared_link.url.split('/')[4]}`}
                 val.title = val.title || this.name;
                 val.size = this.size;
-                var prog = program || "ASI";
+                var prog = val.program || program || "ASI";
                 var year = val.year || "";
                 var type = val.type || "";
 
@@ -294,7 +294,7 @@ function addFilters(){
 function GenerateTitleColumn(val /* entry value from spreadsheet */, download){
     var name = val.title || "";
     // var title = val.gsx$positiontitle.$t;
-    var website = val.size == 0 ? (val.link || "") : "";
+    var website = val.link || ""
     //var website = "<a target='_blank' href='" + val.gsx$website.$t + "'>" + val.gsx$website.$t + "</a>";
     //var email = "<a href='mailto:" + val["gsx$e-mail"].$t + "'>" + val["gsx$e-mail"].$t + "</a>";
     // var allResearchInfo = "Research areas: " + val.gsx$categories.$t;
