@@ -55,7 +55,7 @@ function getFile(file, program) {
         });
     }
     else {
-        shared = $.ajax({url: `https://api.box.com/2.0/files/${file.id}`, 
+        shared = Promise.resolve($.ajax({url: `https://api.box.com/2.0/files/${file.id}`, 
             headers: {
                 'Authorization': "Bearer " + accessToken.toString()
             },
@@ -69,27 +69,25 @@ function getFile(file, program) {
             error: retry,
             retryCount: 0,
             retryLimit: 5        
-        });
+        }));
     }
     let request
     if(file.metadata != null) {
-        request = new Promise(function(resolve, reject){
-            resolve({
-                entries: [
-                    file.metadata.global.properties
-                ]
-            })
+        request = Promise.resolve({
+            entries: [
+                file.metadata.global.properties
+            ]
         })
     }
     else {
-        request = $.ajax({url: `https://api.box.com/2.0/files/${file.id}/metadata`, 
+        request = Promise.resolve($.ajax({url: `https://api.box.com/2.0/files/${file.id}/metadata`, 
             headers: {
                 'Authorization': "Bearer " + accessToken.toString()
             },
             error: retry,
             retryCount: 0,
             retryLimit: 5
-        });
+        }));
     }
     
     let both = Promise.all([shared, request]).then(function([shared_link, response]){
@@ -144,13 +142,13 @@ function getFile(file, program) {
                     }
                 });
 
-                resolve()
+                resolve("success")
             }
             catch(error) {
                 reject(error)
             }
         })
-    }.bind(file));
+    }).catch(error => console.error(error))
 
     return both;
 }
@@ -159,11 +157,12 @@ function getFolderItems(folder, program, marker) {
     if(marker) {
         url += `&marker=${marker}`
     }
-    return $.ajax({url: url, 
+
+    return Promise.resolve($.ajax({url: url, 
     headers: {
         'Authorization': "Bearer " + accessToken.toString()
     }
-    }).then(response => {
+    })).then(response => {
     let entries = response.entries;
     var promises = [];
     for(file of entries) {
@@ -184,7 +183,7 @@ function getFolderItems(folder, program, marker) {
     }
 
     return Promise.all(promises)
-    }, error => console.error(error));
+    }, error => console.error(error))
 }
 
 function filters() {
@@ -235,10 +234,8 @@ $(function () {
         getAccessToken(data).then(response => {
             accessToken = response.access_token;
             let getItems = getFolderItems(69213161846);
-
             
-            getItems.fail(error => console.error(error))
-            getItems.always(buffer().flush);
+            getItems.finally(buffer().flush)
         });
     })
 })
