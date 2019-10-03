@@ -294,7 +294,7 @@ function addFilters(){
 function GenerateTitleColumn(val /* entry value from spreadsheet */, download){
     var name = val.title || "";
     // var title = val.gsx$positiontitle.$t;
-    var website = val.link || ""
+    var website = val.size == 0 ? (val.link || "") : ""
     //var website = "<a target='_blank' href='" + val.gsx$website.$t + "'>" + val.gsx$website.$t + "</a>";
     //var email = "<a href='mailto:" + val["gsx$e-mail"].$t + "'>" + val["gsx$e-mail"].$t + "</a>";
     // var allResearchInfo = "Research areas: " + val.gsx$categories.$t;
