@@ -294,7 +294,7 @@ function addFilters(){
 function GenerateTitleColumn(val /* entry value from spreadsheet */, download){
     var name = val.title || "";
     // var title = val.gsx$positiontitle.$t;
-    var website = val.size == 0 ? (val.link || "") : ""
+    var website = val.link || download.download_url || ""
     //var website = "<a target='_blank' href='" + val.gsx$website.$t + "'>" + val.gsx$website.$t + "</a>";
     //var email = "<a href='mailto:" + val["gsx$e-mail"].$t + "'>" + val["gsx$e-mail"].$t + "</a>";
     // var allResearchInfo = "Research areas: " + val.gsx$categories.$t;
@@ -304,12 +304,7 @@ function GenerateTitleColumn(val /* entry value from spreadsheet */, download){
     var title = 
     (website !== "" ? "<a href='"+ website +"' target=_blank>" : "<span>") + 
     name
-     + (website !== "" ? "</a>" : "</span>") +
-     ((!website && download) ? 
-     "<a href='" + download.download_url + "' target=_blank >" +
-     "<i class='fa fa-download' aria-hidden='true'></i>" +
-     "</a>" : "")
-     ;
+     + (website !== "" ? "</a>" : "</span>");
         
     return title;
 }
@@ -373,6 +368,6 @@ function createDataTable() {
         "bLengthChange": false,
         "data": MyApp.spreadsheetData,
         "aoColumns": MyApp.headerData,
-        order: [[1, "asc"]]
+        order: [[2, "desc"]]
     });
 }
